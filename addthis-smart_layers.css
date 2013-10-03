@@ -1,0 +1,80 @@
+.smart-layer-title {
+	color: black;
+	font-size: 36px;
+	padding-left: 3px;
+	font-family: "HelveticaNeueBold","HelveticaNeue-Bold","Helvetica Neue", Helvetica, "open sans",arial,sans-serif;
+	font-weight: normal;
+}
+.smart-layer-name {
+	color: gray;
+	font-size: 36px;
+	font-weight: normal;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, "open sans",arial,sans-serif;
+}
+.smart-layer-tab {
+	width: 325px;
+	float: left;
+	margin-bottom: 20px;
+	margin-left: 795px;
+}
+.smart-layer-tab a {
+	background-color: #BBB;
+	padding: 10px;
+	border-radius: 4px;
+	width: auto;
+	overflow: auto;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	cursor: pointer;
+	user-select: none;
+	margin-right: 5px;
+	font-size: 12px;
+}
+.smart-layer-tab a:active {
+	background-color: #BBB;
+}
+.smart-layer-tab a:hover{
+	background-color:#aaa;
+	color: #B40404;
+}
+.smart-layer-dialog {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -100px;
+	margin-left: -150px;
+	background: white;
+	width: 300px;
+	border: 1px solid #D7D7D7;
+	padding: 20px 30px;
+	box-shadow: 1px 1px 6px rgba(204,204,204,.8);
+	-webkit-box-shadow: 1px 1px 6px rgba(204,204,204,.8);
+	-moz-box-shadow: 1px 1px 6px rgba(204,204,204,.8);
+	z-index: 600000;
+}
+.smart-layer-dialog .smart-layer-dialog-buttons .button {
+	margin: 0 10px;
+}
+h3.helv {
+	font-family: "Open Sans",Helvetica,arial,sans-serif;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 24px;
+	letter-spacing: -1px;
+}
+.org {
+	color: #FE6D4C!important;
+}
+.instructions {
+	font-size: 14px;
+	color: #424242;
+}
+.copyCode {
+	float: left;
+	width: 620px;
+	margin: 10px 35px 20px;
+}
+#smart-layer-dialog-cancel {
+	margin-top: 2px;
+}
