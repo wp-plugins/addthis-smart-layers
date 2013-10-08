@@ -82,21 +82,18 @@ $(document).ready(function() {
 	});
 	
 	$('#submit').click(function(){
-		var error = 0;
-		try {
-	    	var code = jQuery.parseJSON($('#wbCode').val());
-	    }
-  	    catch (e) {
-			$('#code-error').show();
-			error = 1;
-	    }
-      	  if (error == 0) {
-  			$('#code-error').hide();
-  		    return true;
-  		} else {
-  			$('#code-error').show();
-  		    return false;
-  		}
+		
+		// var error = 0;
+		// try {
+		// 	var code = jQuery.parseJSON($('#wbCode').val());
+		// }
+		// catch (e) {
+		// 	$('#code-error').show();
+		// 	return false;
+		// }
+
+		// $('#code-error').hide();
+		return true;
 	});
 	
 });
