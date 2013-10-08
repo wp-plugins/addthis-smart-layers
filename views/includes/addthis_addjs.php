@@ -99,7 +99,6 @@ Class AddThis_addjs{
             $this->jsToAdd = false;
         } else {        	
         	 $this->addAfterToJs();
-        	 echo $this->jsToAdd;
         }
     }
 
