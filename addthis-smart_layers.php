@@ -9,7 +9,7 @@
  * License: A "Slug" license name e.g. GPL2
 */
 
-define(ADDTHIS_SMART_LAYER_PRODUCT_CODE, '');
+define(ADDTHIS_SMART_LAYER_PRODUCT_CODE, 'wpp');
 define(ADDTHIS_SMART_LAYER_AT_VERSION, 300);
 
 function insert_smart_layer() {
