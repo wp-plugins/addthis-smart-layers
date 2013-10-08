@@ -33,7 +33,7 @@ $advanced = get_option('smart_layer_settings_advanced');
 <div class="smart-layer-container">
 	<div class="container_12 mt20">
 		<div class="grid_12">
-	    	<p class="bigtext">Make your site smarter. Increase traffic, engagement and revenue by instantly showing the right social tools and content to every visitor. It's one piece of code, mobile-ready and free!</p>
+	    	<h3>Make your site smarter. Increase traffic, engagement and revenue by instantly showing the right social tools and content to every visitor.</h3>
 	    </div>
 	    <div class="clear"></div>
 	    <div class="mb20"></div>
@@ -369,8 +369,9 @@ $advanced = get_option('smart_layer_settings_advanced');
 </div>
 </div>
 <script type="text/javascript">
-    var currentPage = 'smart-layers';
-    var changes = false;
+    var currentPage = 'smart-layers',
+    	changes = false;
+
     $ = jQuery;
     $('.ml5').change(function() { 
     	changes = true;
@@ -393,34 +394,27 @@ $advanced = get_option('smart_layer_settings_advanced');
     $('.save-profile, .smart-layer-trigger, .smart-layer-dialog-ok').click(function() {
 		changes = false;
     });
-    window.onbeforeunload = function() {
-	    if (changes) {
-	    	var toConfirm = confirm("Upon leaving the page your changes will be lost!Do you wish to continue?");
-			if (toConfirm == true) {
-				changes = false;
-	   	    	return true;
-	        }
-	    	else {
-	    	   	return false;
-	        }
-	    }
-	}
+
+	$(window).on('beforeunload', function(){
+		if (changes) return "You have unsaved changes that will be lost if you leave this page.";
+	});
+
 </script>
 <script id="generated-code" type="text/template">
 <% if(shareIsTurnedOn || followIsTurnedOn || toasterIsTurnedOn || trendingIsTurnedOn) { %>
-    { 'theme' : '<%= theme %>',<% if(shareIsTurnedOn) { %>
+{
+    'theme' : '<%= theme %>',<% if(shareIsTurnedOn) { %>
     'share' : {
-      'position' : '<%= sharePosition %>',
-      'numPreferredServices' : <%= numPreferredServices %>
+        'position' : '<%= sharePosition %>',
+        'numPreferredServices' : <%= numPreferredServices %>
     }<% if(followIsTurnedOn || toasterIsTurnedOn || trendingIsTurnedOn) { %>,<% } %><% } %> <% if(followIsTurnedOn) { %>
     'follow' : {
-      'services' : <%= followServices %>
+        'services' : <%= followServices %>
     }<% if(toasterIsTurnedOn || trendingIsTurnedOn) { %>,<% } %> <% }%> <% if(toasterIsTurnedOn) { %>
     'whatsnext' : {}<% if(trendingIsTurnedOn) { %>,<% } %> <% }%> <% if(trendingIsTurnedOn) { %>
-    'recommended' : {
-      'title': '<%= trendingLabel %>'
+    'recommended' : { <% if (trendingLabel != "Recommended for you:") { %>'title': '<%= trendingLabel %>'<% } %>
     } <% }%>
-  }
+}
 <% } else { %>
   // No smart layers are selected
 <% } %>

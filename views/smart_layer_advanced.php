@@ -4,18 +4,16 @@
 </div>
 <?php } ?>
 <div class="smart-layer-wrap">
+<div class="smart-layer-tab"><a class="smart-layer-trigger">Revert to WYSIWYG</a></div>
 <p>
 	<img alt="addthis" src="//cache.addthis.com/icons/v1/thumbs/32x32/more.png" class="header-img">
     <span class="smart-layer-title">AddThis</span> <span class="smart-layer-name">Smart Layers</span>
 </p>
-<div class="smart-layer-tab">
-<a class="smart-layer-trigger" title="Developers: Edit your Smart Layer plugin code using our API to unlock additional features.">Revert to WYSIWYG</a>
-</div>
 <div class="smart-layer-container">
 	<div>	
 	<div class="lwrOpt ml10">
         <div class="wbcHdr">
-        <span style="float: left;width: 100%;margin-bottom: 10px;">Here you can specify a custom API configuration.  This will give you the ability to use all the different API options available in the <a href="http://support.addthis.com/customer/portal/articles/1200473-smart-layers-api#.Uk0EmW6Mi0w" target="_blank">Smart Layers API.</a></span>
+        	<h3>Here you can specify a custom API configuration.  This will give you the ability to use all the different API options available in the <a href="http://support.addthis.com/customer/portal/articles/1200473-smart-layers-api#.Uk0EmW6Mi0w" target="_blank">Smart Layers API.</a></h3>
         </div>
 	</div>
 	<div class="clear"></div>
@@ -24,7 +22,7 @@
 <div class="codeRt">
 	<div class="instructions">
 		<div>
-			<span class="copyLabel" style="float: left;width: 525px;">Edit your settings.</span>
+			<span class="copyLabel" style="float: left;width: 500px;">Edit your settings.</span>
 			<span class="copyLabel">Example</span>
 		</div>
     	<div class="RDcodesize">
@@ -35,9 +33,9 @@
     	<form action="" method="post">
 			<?php settings_fields('smart_layer_settings'); ?>
 			<?php $options = get_option('smart_layer_settings'); ?>		
-			<textarea id="wbCode" name="smart_layer_settings" style="resize:both;height:400px;background:#fff;" rows=25 cols=100 ><?php echo $options; ?></textarea>
+			<textarea id="wbCode" name="smart_layer_settings" style="resize:both;height:400px;background:#fff;"><?php echo $options; ?></textarea>
 			<div class="clear"></div><div class="clear"></div><div class="clear"></div>
-			 <input type="hidden" name="save_my_smart_layer" value="save_my_smart_layer" />
+			<input type="hidden" name="save_my_smart_layer" value="save_my_smart_layer" />
 			<?php if(current_user_can('unfiltered_html')) {
 				submit_button();
 			} ?> 
@@ -48,7 +46,42 @@
     </div>
     
     <div class="copyCode">
-    	<pre class="prettyprint" style="margin-top: 10px; margin-bottom: 15px; padding-top: 2px; padding-right: 2px; padding-bottom: 2px; padding-left: 2px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-style: initial; border-color: initial; border-image: initial; vertical-align: baseline; outline-style: initial; outline-width: 0px; outline-color: initial; background-image: initial; background-attachment: initial; background-origin: initial; background-clip: initial; background-color: rgb(248, 248, 248); border-top-color: rgb(136, 136, 136); border-right-color: rgb(136, 136, 136); border-bottom-color: rgb(136, 136, 136); border-left-color: rgb(136, 136, 136); white-space: pre-wrap; word-wrap: break-word; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; "><font color="#000000"><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="str">'theme'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'transparent'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="str">'domain'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'www.mysite.com'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="str">'linkFilter'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">function</span><span class="pun">(</span><span class="pln">link</span><span class="pun">,</span><span class="pln"> layer</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">link</span><span class="pun">.</span><span class="pln">title </span><span class="pun">+</span><span class="pln"> </span><span class="str">' - '</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> link</span><span class="pun">.</span><span class="pln">url </span><span class="pun">+</span><span class="pln"> </span><span class="str">" - "</span><span class="pln"> </span><span class="pun">+</span><span class="pln"> layer</span><span class="pun">);</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="kwd">return</span><span class="pln"> link</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">},</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="str">'responsive'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="str">'maxWidth'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'979px'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="str">'minWidth'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'0px'</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">},</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="str">'share'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'position'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'left'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'services'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'facebook,twitter,email,print,more'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="com">//'numPreferredServices' : 5,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'postShareTitle'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'Thanks for sharing!'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'postShareFollowMsg'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'Follow us'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'postShareRecommendedMsg'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'Recommended for you'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'desktop'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'mobile'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'theme'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'transparent'</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">},</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="str">'follow'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'services'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun">{</span><span class="str">'service'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'facebook'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'id'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'AddThis'</span><span class="pun">},</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun">{</span><span class="str">'service'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'twitter'</span><span class="pun">,</span><span class="pln"> </span><span class="str">'id'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'AddThis'</span><span class="pun">}</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="pun">],</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'title'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'Follow'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'postFollowTitle'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'Thanks for following!'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'postFollowRecommendedMsg'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'Recommended for you'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'mobile'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'desktop'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'theme'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'transparent'</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">},</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="str">'whatsnext'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'recommendedTitle'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'Recommended for you'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'shareMsg'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'Share to [x]'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'followMsg'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'Follow us on [x]'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'theme'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'transparent'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'desktop'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">},</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="str">'recommended'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'title'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'Recommended for you'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'mobile'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'desktop'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'theme'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'transparent'</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">},</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="str">'mobile'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'buttonBarPosition'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'top'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'buttonBarTheme'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="str">'transparent'</span><span class="pun">,</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; &nbsp; </span><span class="str">'mobile'</span><span class="pln"> </span><span class="pun">:</span><span class="pln"> </span><span class="kwd">true</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">}</span></font></pre>
+    	<pre class="prettyprint" style="margin-top:10px">
+{
+theme : 'transparent',
+share : {
+    'position' : 'left',
+    'services' : 'facebook,twitter,email,print,more',
+    //'numPreferredServices' : 5,
+    'postShareTitle' : 'Thanks for sharing!',
+    'postShareFollowMsg' : 'Follow us',
+    'postShareRecommendedMsg' : 'Recommended for you'
+},
+follow : {
+    'services' : [
+        {'service' : 'facebook', 'id' : 'AddThis'},
+        {'service' : 'twitter', 'id' : 'AddThis'}
+    ],
+    'title' : 'Follow',
+    'postFollowTitle' : 'Thanks for following!',
+    'postFollowRecommendedMsg' : 'Recommended for you'
+},
+whatsnext : {
+    'recommendedTitle' : 'Recommended for you',
+    'shareMsg' : 'Share to [x]',
+    'followMsg' : 'Follow us on [x]'
+},
+recommended : {
+    'title' : 'Recommended for you'
+},
+mobile : {
+    'buttonBarPosition' : 'top',
+    'buttonBarTheme' : 'transparent'
+}
+}
+    	</pre>
+
+
     </div>
     <div class="clear"></div><div class="clear"></div><div class="clear"></div>
 </div>

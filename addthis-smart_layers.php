@@ -55,10 +55,11 @@ function smart_layer_admin_menu() {
 		wp_enqueue_script('lodash_script', plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis-smart-layers/js/lodash-0.10.0.js');
 		wp_enqueue_script('bootstrap_script', plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis-smart-layers/js/bootstrap.js');
 		wp_enqueue_script('ibutton_script', plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis-smart-layers/js/ibutton.js');
-		wp_enqueue_script('animate_script', plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis-smart-layers/js/animate-colors.js');
+		//wp_enqueue_script('animate_script', plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis-smart-layers/js/animate-colors.js');
 		wp_enqueue_script('placeholder_script', plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis-smart-layers/js/jquery.placeholder.js');
 		wp_enqueue_script('gtc_smart_layer_script', plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis-smart-layers/js/gtc.smart-layers.js');
 		wp_enqueue_script('smart_layer_modal_script', plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis-smart-layers/js/smart_layer_modal.js');
+		wp_enqueue_script('prettify', 'https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js');
 		
 		wp_enqueue_style('bootstrap_style', plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis-smart-layers/css/bootstrap.css');
 		wp_enqueue_style('wp-jquery-ui-dialog');

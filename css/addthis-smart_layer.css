@@ -1,6 +1,6 @@
 .smart-layer-wrap {
-	float: left;
-	padding: 20px 0 0 0;
+	position:relative;
+	margin: 20px;
 }
 .smart-layer-title {
 	color: black;
@@ -16,9 +16,9 @@
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, "open sans",arial,sans-serif;
 }
 .smart-layer-tab {
-	width: 325px;
-	float: right;
-	margin-bottom: 20px;
+	position:absolute;
+	top:0;
+	right:0;
 }
 .smart-layer-tab a {
 	background-color: #BBB;
@@ -39,7 +39,7 @@
 }
 .smart-layer-tab a:hover{
 	background-color:#aaa;
-	color: #B40404;
+	color: #fff;
 }
 .smart-layer-dialog {
 	position: fixed;
@@ -75,7 +75,7 @@ h3.helv {
 }
 .copyCode {
 	float: left;
-	width: 525px;
+	width: 500px;
 }
 #smart-layer-dialog-cancel {
 	margin-top: 2px;
@@ -127,7 +127,6 @@ h3.helv {
 	color: white!important;
 	width: 147px;
 	height: 50px;
-	margin: 15px;
 	font-size: 18px;
 }
 .stick {

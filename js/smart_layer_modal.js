@@ -56,18 +56,6 @@ $(document).ready(function() {
 		$('#smart-layer-dialog-cancel').click(atModalCancelHandler);
 		//$('#at-welcome-dialog-ok').click(atModalOkHandler);
 	});
-	
-	var s = $("#custom_api");
-    var pos = s.position(); 
-    $(window).scroll(function() {
-        var windowpos = $(window).scrollTop();
-        
-        if (windowpos >= pos.top) {
-            s.addClass("stick");
-        } else {
-            s.removeClass("stick"); 
-        }
-    });
     
     $('#profile_id a').mouseover(function(){
 		me = $(this);
