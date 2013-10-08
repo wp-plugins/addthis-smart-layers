@@ -1,11 +1,11 @@
 === Smart Layers by AddThis === 
 Contributors: srijith.v, solchea, _mjk_, addthis_paul
-Tags: smart layers, mobile, follow, share, addthis, social, bookmark, sharing, bookmarking, widget,AddThis, addtoany, aim, bookmark, buzz, del.icio.us, Digg,e-mail, email, Facebook, google bookmarks, google buzz, myspace,network, NewsVine, Reddit, Share, share this, sharethis, social, socialize, stumbleupon, twitter, windows live, yahoo buzz, pintrest, widget
+Tags: smart layers, mobile, follow, share, addthis, social, bookmark, sharing, bookmarking, widget, AddThis, addtoany, aim, bookmark, buzz, del.icio.us, Digg, e-mail, email, Facebook, google bookmarks, google buzz, myspace, network, NewsVine, Reddit, share this, sharethis, social, socialize, stumbleupon, twitter, windows live, yahoo buzz, pinterest, google+, recommended content, content recommendation, toaster
 Requires at least: 3.3
 Tested up to: 3.6.1
 Stable tag: 1.0
 
-Increase traffic, content engagement, and revenue by instantly showing the right social tools and best content to every visitor. Make your site smarter with Smart Layers.
+Increase traffic, content engagement, and revenue by showing the right social tools and best content. Make your site smarter with Smart Layers.
 
 == Description ==
 
@@ -26,9 +26,13 @@ Check out our other plugins!
 We also have plugins available for:
 
 <a href="http://wordpress.org/extend/plugins/addthis/">Increasing shares</a>
+
 <a href="http://wordpress.org/extend/plugins/addthis-follow/">Increasing followers on social networks</a>
+
 <a href="http://wordpress.org/extend/plugins/addthis-welcome/">Welcoming users based on social behavior</a>
+
 <a href="http://wordpress.org/extend/plugins/addthis-social-sign-in">Adding social authentication</a>
+
 <a href="http://wordpress.org/extend/plugins/addthis-trending-content/">Showing your trending content</a>
 
 Find us on <a href="https://www.facebook.com/AddThis">Facebook</a>, <a href="https://twitter.com/addthis">Twitter</a>, and our <a href="http://www.addthis.com/blog">AddThis Blog</a>. Here’s our <a href="http://www.addthis.com/privacy">Privacy Policy</a>, too.
@@ -37,7 +41,6 @@ Find us on <a href="https://www.facebook.com/AddThis">Facebook</a>, <a href="htt
 
 1. Easy configuration option with preview for various screen sizes. 
 2. Advanced option for power users to customize using AddThis Smart Layers API
-
 
 == Installation ==
 
@@ -87,5 +90,7 @@ We currently support over 330 services, from email and blogging platforms to soc
 == PHP Version ==
 
 PHP 5+ is preferred; PHP 4 is supported.
+
+== Changelog ==
 
 
