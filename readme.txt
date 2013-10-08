@@ -1,31 +1,37 @@
 === Smart Layers by AddThis === 
 Contributors: srijith.v, solchea, _mjk_, addthis_paul
 Tags: smart layers, mobile, follow, share, addthis, social, bookmark, sharing, bookmarking, widget,AddThis, addtoany, aim, bookmark, buzz, del.icio.us, Digg,e-mail, email, Facebook, google bookmarks, google buzz, myspace,network, NewsVine, Reddit, Share, share this, sharethis, social, socialize, stumbleupon, twitter, windows live, yahoo buzz, pintrest, widget
-Requires at least: 3.0
+Requires at least: 3.3
 Tested up to: 3.6.1
 Stable tag: 1.0
 
-Make your site smarter. Increase traffic, engagement and revenue by instantly showing the right social tools and content to every visitor. Mobile ready & free!
+Increase traffic, content engagement, and revenue by instantly showing the right social tools and best content to every visitor. Make your site smarter with Smart Layers.
 
 == Description ==
 
+Give your site’s visitors easy-to-use buttons to engage with your content. These social sharing buttons work as layers that overlay your site so not to disrupt your design. 
 
-* Add share buttons, follow buttons, and content recommendations to your pages.
+Here are some tips for maximizing and streamlining content engagement with our newest plugin:
 
-* Easy-to-install layers float effortlessly over your content without disrupting your layout. Now that's smart!
+* Add share buttons and follow buttons that make it easier for your visitors to engage with your site’s content.
+* Recommend additional content from your site to keep your visitors engaged with you.
+* Turn layers on/off and customize their appearance by choosing from three different themes––light, dark, and transparent.
+* Add all these smart features which will float effortlessly above your site’s design so not to disrupt your design.
+* Drive engagement by showing your visitors the right social networks and best content to continue engaging them with your site.
 
-* Smart Layers works seamlessly with other AddThis tools like Share and Follow Buttons, and includes complete analytics reporting.
+Don’t miss out on your Analytics! Be sure to register so you can keep track of how Smart Layers works on your site, and get to know your audience.
 
-* AddThis shows every visitor recommended content and the social tools that are most relevant and likely to drive engagement.
+Check out our other plugins!
 
+We also have plugins available for:
 
+<a href="http://wordpress.org/extend/plugins/addthis/">Increasing shares</a>
+<a href="http://wordpress.org/extend/plugins/addthis-follow/">Increasing followers on social networks</a>
+<a href="http://wordpress.org/extend/plugins/addthis-welcome/">Welcoming users based on social behavior</a>
+<a href="http://wordpress.org/extend/plugins/addthis-social-sign-in">Adding social authentication</a>
+<a href="http://wordpress.org/extend/plugins/addthis-trending-content/">Showing your trending content</a>
 
-Optionally, sign up for a free AddThis.com account to see how your visitors are sharing your content: which services they're using for sharing, which content is shared the most, and more.
-
-We also have plugins available for <a href='http://wordpress.org/extend/plugins/addthis/'>increasing shares</a>, <a href='http://wordpress.org/extend/plugins/addthis-follow/'>increasing followers on social networks</a>, <a href='http://wordpress.org/extend/plugins/addthis-welcome/'>welcoming users based on social behavior</a>, <a href='http://wordpress.org/extend/plugins/addthis-social-sign-in'>adding social authentication</a> and <a href='http://wordpress.org/extend/plugins/addthis-trending-content/'>showing your trending content</a> to your WordPress blog.
-
-<a href="http://www.addthis.com/blog">AddThis Blog</a> | <a href="http://www.addthis.com/privacy">Privacy Policy</a>
-
+Find us on <a href="https://www.facebook.com/AddThis">Facebook</a>, <a href="https://twitter.com/addthis">Twitter</a>, and our <a href="http://www.addthis.com/blog">AddThis Blog</a>. Here’s our <a href="http://www.addthis.com/privacy">Privacy Policy</a>, too.
 
 == Screenshots ==
 
