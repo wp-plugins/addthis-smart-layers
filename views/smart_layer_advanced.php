@@ -1,14 +1,31 @@
-<?php if (isset($_POST['save_my_smart_layer'])) { ?>
+<?php
+if (isset($_POST['save_my_smart_layer'])) { ?>
 <div class="updated settings-error" id="ettings_updated" > 
 	<p><strong>Settings saved.</strong></p>
 </div>
 <?php } ?>
-<div class="smart-layer-wrap">
+<div class="smart-layer-wrap advanced">
 <div class="smart-layer-tab"><a class="smart-layer-trigger">Revert to WYSIWYG</a></div>
 <p>
 	<img alt="addthis" src="//cache.addthis.com/icons/v1/thumbs/32x32/more.png" class="header-img">
     <span class="smart-layer-title">AddThis</span> <span class="smart-layer-name">Smart Layers</span>
 </p>
+<?php 
+	    	if (get_option('smart_layer_profile') != "") {
+	    		$smart_layer_id = get_option('smart_layer_profile');
+	    	}
+	    	else {
+	    		global $addthis_addjs;
+				$smart_layer_id = $addthis_addjs->pubid ;
+	    	}
+
+			?>
+<form action="#" method="post">
+<span id="profile_id" style="float: left;border: none;padding-right: 0px;font-size: 12px;width: 100%;" data-content="By specifying your AddThis Profile ID, you will have access to analytics measuring your shares, follows and clicks. You can find your AddThis Profile ID in the <a href='https://www.addthis.com/settings/user' target='_blank'>Settings</a> section of <a href='www.addthis.com' target='_blank'>www.addthis.com"</a> 
+        <p style="margin: 0; font-weight: bold; margin: 5px; width: 130px; float: left;"><?php _e("AddThis Profile ID:", 'addthis_trans_domain' ); ?></p>
+        <input id="addthis_profile" type="text" name="addthis_profile" value="<?php echo $smart_layer_id;?>" autofill='off' autocomplete='off' />
+        (<a href="#">?</a>)
+	</span>
 <div class="smart-layer-container">
 	<div>	
 	<div class="lwrOpt ml10">
@@ -30,8 +47,8 @@
         </div>
     </div>
     <div class="copyCode">
-    	<form action="" method="post">
-			<?php settings_fields('smart_layer_settings'); ?>
+    	
+			<?php //settings_fields('smart_layer_settings'); ?>
 			<?php $options = get_option('smart_layer_settings'); ?>		
 			<textarea id="wbCode" name="smart_layer_settings" style="resize:both;height:400px;background:#fff;"><?php echo $options; ?></textarea>
 			<div class="clear"></div><div class="clear"></div><div class="clear"></div>
