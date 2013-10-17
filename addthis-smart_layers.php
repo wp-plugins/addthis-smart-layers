@@ -2,7 +2,7 @@
 /*
  * Plugin Name: AddThis Smart Layers
  * Description: AddThis Smart Layers. Make your site smarter. Increase traffic, engagement and revenue by instantly showing the right social tools and content to every visitor. 
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: The AddThis Team
  * Author URI: http://www.addthis.com/blog
  * Plugin URI: http://www.addthis.com
@@ -70,6 +70,7 @@ function smart_layer_admin_menu() {
 		wp_enqueue_style('smart_layer_style', plugins_url( '', basename(dirname(__FILE__)) ) . '/addthis-smart-layers/css/addthis-smart_layer.css');
 		
 		wp_localize_script( 'gtc_smart_layer_script', 'smart_layer_params', array('wp_ajax_url'=> admin_url('admin-ajax.php'), 'img_base' => $imgLocationBase) );
+		wp_localize_script( 'smart_layer_modal_script', 'smartlayer_param', array('ajax_url'=> admin_url('admin-ajax.php')) );
 	}
 }
 add_action('admin_menu','smart_layer_admin_menu');
@@ -90,17 +91,21 @@ add_action( 'admin_init', 'register_smart_layer_settings' );
 add_action("wp_ajax_save_smart_layer_settings", "save_smart_layer_settings");
 
 function save_smart_layer_settings() {
-	$value	= isset($_POST['value']) ? $_POST['value'] : '';
-	$id = isset($_POST['profileId']) ? $_POST['profileId'] : '';
-	update_option('smart_layer_settings', "$value");
-	global $addthis_addjs;
-	$addthis_addjs['profile'] = $id;
-	update_option('smart_layer_profile', "$id");
-	die('{"value":"' . $value . '"}');
+	if(current_user_can('manage_options')) {
+
+		$value	= isset($_POST['value']) ? $_POST['value'] : '';
+		$id = isset($_POST['profileId']) ? $_POST['profileId'] : '';
+		update_option('smart_layer_settings', "$value");
+		global $addthis_addjs;
+		$addthis_addjs['profile'] = $id;
+		update_option('smart_layer_profile', "$id");
+		die('{"value":"' . $value . '"}');
+	}
 }
 
-function save_custom_layer_settings($value) {
+function save_custom_layer_settings($value, $id) {
 	update_option('smart_layer_settings', "$value");
+	update_option('smart_layer_profile', "$id");
 }
 
 function smart_layer_deactivate() {
@@ -115,10 +120,11 @@ if(isset($_POST['action'])) {
     } 
 }
 
-if (isset($_POST['save_my_smart_layer'])) {
+if (isset($_POST['save_my_smart_layer'])) { 
 	if($_POST['save_my_smart_layer'] == 'save_my_smart_layer') {
 		$value = $_POST['smart_layer_settings'];
-		save_custom_layer_settings($value);
+		$id = $_POST['addthis_profile'];
+		save_custom_layer_settings($value, $id);
 	}
 }
 
