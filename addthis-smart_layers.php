@@ -104,11 +104,8 @@ function save_smart_layer_settings() {
 }
 
 function save_custom_layer_settings($value, $id) {
-	if(current_user_can('manage_options')) {
-
-		update_option('smart_layer_settings', "$value");
-		update_option('smart_layer_profile', "$id");
-	}
+	update_option('smart_layer_settings', "$value");
+	update_option('smart_layer_profile', "$id");
 }
 
 function smart_layer_deactivate() {
