@@ -2,7 +2,7 @@
 /*
  * Plugin Name: AddThis Smart Layers
  * Description: AddThis Smart Layers. Make your site smarter. Increase traffic, engagement and revenue by instantly showing the right social tools and content to every visitor. 
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: The AddThis Team
  * Author URI: http://www.addthis.com/blog
  * Plugin URI: http://www.addthis.com
@@ -91,18 +91,24 @@ add_action( 'admin_init', 'register_smart_layer_settings' );
 add_action("wp_ajax_save_smart_layer_settings", "save_smart_layer_settings");
 
 function save_smart_layer_settings() {
-	$value	= isset($_POST['value']) ? $_POST['value'] : '';
-	$id = isset($_POST['profileId']) ? $_POST['profileId'] : '';
-	update_option('smart_layer_settings', "$value");
-	global $addthis_addjs;
-	$addthis_addjs['profile'] = $id;
-	update_option('smart_layer_profile', "$id");
-	die('{"value":"' . $value . '"}');
+	if(current_user_can('manage_options')) {
+
+		$value	= isset($_POST['value']) ? $_POST['value'] : '';
+		$id = isset($_POST['profileId']) ? $_POST['profileId'] : '';
+		update_option('smart_layer_settings', "$value");
+		global $addthis_addjs;
+		$addthis_addjs['profile'] = $id;
+		update_option('smart_layer_profile', "$id");
+		die('{"value":"' . $value . '"}');
+	}
 }
 
 function save_custom_layer_settings($value, $id) {
-	update_option('smart_layer_settings', "$value");
-	update_option('smart_layer_profile', "$id");
+	if(current_user_can('manage_options')) {
+
+		update_option('smart_layer_settings', "$value");
+		update_option('smart_layer_profile', "$id");
+	}
 }
 
 function smart_layer_deactivate() {
