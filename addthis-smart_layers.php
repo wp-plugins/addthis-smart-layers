@@ -9,8 +9,8 @@
  * License: GPL2
 */
 
-define(ADDTHIS_SMART_LAYER_PRODUCT_CODE, 'wpp');
-define(ADDTHIS_SMART_LAYER_AT_VERSION, 300);
+define('ADDTHIS_SMART_LAYER_PRODUCT_CODE', 'wpp');
+define('ADDTHIS_SMART_LAYER_AT_VERSION', 300);
 
 function insert_smart_layer() {
 	require('views/smart_layer_include.php');
