@@ -2,11 +2,11 @@
 /*
  * Plugin Name: AddThis Smart Layers
  * Description: AddThis Smart Layers. Make your site smarter. Increase traffic, engagement and revenue by instantly showing the right social tools and content to every visitor. 
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: The AddThis Team
  * Author URI: http://www.addthis.com/blog
  * Plugin URI: http://www.addthis.com
- * License: A "Slug" license name e.g. GPL2
+ * License: GPL2
 */
 
 define(ADDTHIS_SMART_LAYER_PRODUCT_CODE, 'wpp');
@@ -90,9 +90,9 @@ add_action( 'admin_init', 'register_smart_layer_settings' );
 
 add_action("wp_ajax_save_smart_layer_settings", "save_smart_layer_settings");
 
-function save_smart_layer_settings() {
-	if(current_user_can('manage_options')) {
 
+function save_settings() {
+	if(current_user_can('manage_options')) {
 		$value	= isset($_POST['value']) ? $_POST['value'] : '';
 		$id = isset($_POST['profileId']) ? $_POST['profileId'] : '';
 		update_option('smart_layer_settings', "$value");
@@ -101,6 +101,11 @@ function save_smart_layer_settings() {
 		update_option('smart_layer_profile', "$id");
 		die('{"value":"' . $value . '"}');
 	}
+}
+
+function save_smart_layer_settings() {
+	//Wait till plugabble.php is loaded to check user capability
+	add_action('plugins_loaded', 'save_settings');
 }
 
 function save_custom_layer_settings($value, $id) {
