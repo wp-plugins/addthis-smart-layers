@@ -401,21 +401,21 @@ $advanced = get_option('smart_layer_settings_advanced');
 
 </script>
 <script id="generated-code" type="text/template">
-<% if(shareIsTurnedOn || followIsTurnedOn || toasterIsTurnedOn || trendingIsTurnedOn) { %>
+<@ if(shareIsTurnedOn || followIsTurnedOn || toasterIsTurnedOn || trendingIsTurnedOn) { @>
 {
-    'theme' : '<%= theme %>',<% if(shareIsTurnedOn) { %>
+    'theme' : '<@= theme @>',<@ if(shareIsTurnedOn) { @>
     'share' : {
-        'position' : '<%= sharePosition %>',
-        'numPreferredServices' : <%= numPreferredServices %>
-    }<% if(followIsTurnedOn || toasterIsTurnedOn || trendingIsTurnedOn) { %>,<% } %><% } %> <% if(followIsTurnedOn) { %>
+        'position' : '<@= sharePosition @>',
+        'numPreferredServices' : <@= numPreferredServices @>
+    }<@ if(followIsTurnedOn || toasterIsTurnedOn || trendingIsTurnedOn) { @>,<@ } @><@ } @> <@ if(followIsTurnedOn) { @>
     'follow' : {
-        'services' : <%= followServices %>
-    }<% if(toasterIsTurnedOn || trendingIsTurnedOn) { %>,<% } %> <% }%> <% if(toasterIsTurnedOn) { %>
-    'whatsnext' : {}<% if(trendingIsTurnedOn) { %>,<% } %> <% }%> <% if(trendingIsTurnedOn) { %>
-    'recommended' : { <% if (trendingLabel != "Recommended for you:") { %>'title': '<%= trendingLabel %>'<% } %>
-    } <% }%>
+        'services' : <@= followServices @>
+    }<@ if(toasterIsTurnedOn || trendingIsTurnedOn) { @>,<@ } @> <@ }@> <@ if(toasterIsTurnedOn) { @>
+    'whatsnext' : {}<@ if(trendingIsTurnedOn) { @>,<@ } @> <@ }@> <@ if(trendingIsTurnedOn) { @>
+    'recommended' : { <@ if (trendingLabel != "Recommended for you:") { @>'title': '<@= trendingLabel @>'<@ } @>
+    } <@ }@>
 }
-<% } else { %>
+<@ } else { @>
   // No smart layers are selected
-<% } %>
+<@ } @>
 </script>

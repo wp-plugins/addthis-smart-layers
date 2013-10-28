@@ -758,6 +758,13 @@
 				pubId = $("#pub").val();
 			}
 			// Setting the generated code template property
+
+			/* To make it work on servers with ASP style <% %> enabled, we change Lo-Dash 
+			   template delimiter <% %> to <@ @>. */
+		    _.templateSettings = {
+  				interpolate: /\<\@\=(.+?)\@\>/g,
+  				evaluate: /\<\@(.+?)\@\>/g
+			};  
 			var leftSharePosition = $('#left-share-position'),
 				template = _.template($.trim($("#generated-code").html()), {
 					theme: $('#at40-accordion-more-themes').val(),
