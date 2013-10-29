@@ -91,7 +91,9 @@
 					$elem = $(elem);
 					val = obj[elem];
 					if($elem.is('input:text') || $elem.is('textarea')) {
-						$elem.val(val);
+						if($elem.attr("id") != 'addthis_profile') {
+							$elem.val(val);
+						}
 					}
 					else if($elem.is(':checkbox')) {
 						if(val === true) {
