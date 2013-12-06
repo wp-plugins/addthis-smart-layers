@@ -93,6 +93,9 @@ PHP 5+ is preferred; PHP 4 is supported.
 
 
 == Changelog ==
+= 1.0.6 = 
+* Minor update
+
 = 1.0.5 = 
 * Better compatibility with other Wordpress plugins from AddThis
 
@@ -109,6 +112,9 @@ PHP 5+ is preferred; PHP 4 is supported.
 * Bug fixes.
 
 == Upgrade Notice ==
+= 1.0.6 = 
+Minor update
+
 = 1.0.5 = 
 Better compatibility with other Wordpress plugins from AddThis
 
