@@ -4,6 +4,13 @@ if (isset($_POST['save_my_smart_layer'])) { ?>
 	<p><strong>Settings saved.</strong></p>
 </div>
 <?php } ?>
+<div class="updated addthis_setup_nag">
+    <p>AddThis Pro now available - start your trial at 
+        <a href="http://www.addthis.com" target="_blank">www.addthis.com</a> 
+        and get premium widgets, personalized content recommendations, 
+        advanced customization options and priority support.
+    </p>
+</div>
 <div class="smart-layer-wrap advanced">
 <div class="smart-layer-tab"><a class="smart-layer-trigger">Revert to WYSIWYG</a></div>
 <p>

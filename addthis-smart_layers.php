@@ -2,7 +2,7 @@
 /*
  * Plugin Name: AddThis Smart Layers
  * Description: AddThis Smart Layers. Make your site smarter. Increase traffic, engagement and revenue by instantly showing the right social tools and content to every visitor. 
- * Version: 1.0.6
+ * Version: 1.1
  * Author: The AddThis Team
  * Author URI: http://www.addthis.com/blog
  * Plugin URI: http://www.addthis.com
@@ -35,13 +35,18 @@ function init_smart_layer_config() {
 }
 add_action('admin_init', 'init_smart_layer_config');
 
-function smart_layer_admin() {  
-	if(get_option('smart_layer_settings_advanced') != '0') {
-			require("views/smart_layer_advanced.php");
-	} else {
-		require("views/smart_layer_admin.php");
-	}
-} 
+function smart_layer_admin() {
+    if (get_option('smart_layer_settings_advanced') != '0') {
+        $smart_layer_pro = get_option('smart_layer_pro');
+        if ($smart_layer_pro) {
+            require("views/smart_layer_admin.php");
+        } else {
+            require("views/smart_layer_advanced.php");
+        }
+    } else {
+        require("views/smart_layer_admin.php");
+    }
+}
 
 function smart_layer_admin_menu() {
 	$imgLocationBase = apply_filters( 'smart_files_uri',  plugins_url( '' , basename(dirname(__FILE__)))) . '/addthis-smart-layers/img/'  ;
@@ -75,12 +80,12 @@ function smart_layer_admin_menu() {
 }
 add_action('admin_menu','smart_layer_admin_menu');
 
-function smart_layer_admin_actions() {  
-	update_option( 'smart_layer_activated', '1' );
-	
-    add_options_page("AddThis Smart Layers", "AddThis Smart Layers", 'manage_options', basename(__FILE__), "smart_layer_admin");  
-}  
-  
+function smart_layer_admin_actions() {
+    is_smart_layer_pro();
+    update_option('smart_layer_activated', '1');
+    add_options_page("AddThis Smart Layers", "AddThis Smart Layers", 'manage_options', basename(__FILE__), "smart_layer_admin");
+}
+
 add_action('admin_menu', 'smart_layer_admin_actions');  
 
 function register_smart_layer_settings() {
@@ -99,16 +104,17 @@ function strip_if_needed($value) {
 }
 
 function save_settings() {
-	if(current_user_can('manage_options')) {
-
-		$value	= isset($_POST['value']) ? strip_if_needed($_POST['value']) : '';
-		$id = isset($_POST['profileId']) ? $_POST['profileId'] : '';
-		update_option('smart_layer_settings', "$value");
-		global $addthis_addjs;
-		$addthis_addjs['profile'] = $id;
-		update_option('smart_layer_profile', "$id");
-		die('{"value":"' . $value . '"}');
-	}
+    if (current_user_can('manage_options')) {
+        $value = isset($_POST['value']) ? strip_if_needed($_POST['value']) : '';
+        $id = isset($_POST['profileId']) ? $_POST['profileId'] : '';
+        if (!is_smart_layer_pro($id)) {
+            update_option('smart_layer_settings', "$value");
+        }
+        global $addthis_addjs;
+        $addthis_addjs['profile'] = $id;
+        update_option('smart_layer_profile', "$id");
+        die('{"value":"' . $value . '"}');
+    }
 }
 
 function save_smart_layer_settings() {
@@ -117,9 +123,11 @@ function save_smart_layer_settings() {
 }
 
 function save_custom_layer_settings($value, $id) {
-	$value = strip_if_needed($value);
-	update_option('smart_layer_settings', "$value");
-	update_option('smart_layer_profile', "$id");
+    $value = strip_if_needed($value);
+    if (!is_smart_layer_pro($id)) {
+        update_option('smart_layer_settings', "$value");
+    }
+    update_option('smart_layer_profile', "$id");
 }
 
 function smart_layer_deactivate() {
@@ -155,4 +163,52 @@ function smart_layer_early(){
 		$addthis_addjs = new AddThis_addjs_extender($addthis_options);
 	}
 }
+
+// check for pro user
+function is_smart_layer_pro($id = null) {
+    $isPro = false;
+    if ($id) {
+        $profile = $id;
+    } else {
+        $profile = get_option('smart_layer_profile');
+    }
+    if ($profile) {
+        $profile_code = str_replace('-', '', $profile);
+        $smart_layer_pro = get_option('smart_layer_pro');
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "http://q.addthis.com/feeds/1.0/config.json?pubid=" . $profile . "&callback=_ate.cbs.fds_" . $profile_code);
+
+        // receive server response ...
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        // further processing ....
+        $server_output = curl_exec($ch);
+        curl_close($ch);
+        $first_index = strpos($server_output, '({');
+        $last_index = strrpos($server_output, '})');
+
+        // check for pro user
+        if (($last_index - $first_index) > 2) {
+            if ($smart_layer_pro) {
+                // update pro user settings 
+                update_option('smart_layer_pro', true);
+                update_option('smart_layer_pro_setting', $server_output);
+            } else {
+                // add pro user settings 
+                add_option('smart_layer_pro', true);
+                add_option('smart_layer_pro_setting', $server_output);
+            }
+            $isPro = true;
+        } else {
+            if ($smart_layer_pro) {
+                // update pro user settings 
+                delete_option('smart_layer_pro');
+                delete_option('smart_layer_pro_setting');
+            }
+            $isPro = false;
+        }
+    }
+    return $isPro;
+}
+
 ?>
