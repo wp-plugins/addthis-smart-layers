@@ -2,14 +2,14 @@
 /*
  * Plugin Name: AddThis Smart Layers
  * Description: AddThis Smart Layers. Make your site smarter. Increase traffic, engagement and revenue by instantly showing the right social tools and content to every visitor. 
- * Version: 1.1
+ * Version: 1.0.7
  * Author: The AddThis Team
  * Author URI: http://www.addthis.com/blog
  * Plugin URI: http://www.addthis.com
  * License: GPL2
 */
 
-define('ADDTHIS_SMART_LAYER_PRODUCT_CODE', 'wpp-1.0.6');
+define('ADDTHIS_SMART_LAYER_PRODUCT_CODE', 'wpp-1.0.7');
 define('ADDTHIS_SMART_LAYER_AT_VERSION', 300);
 
 function insert_smart_layer() {
