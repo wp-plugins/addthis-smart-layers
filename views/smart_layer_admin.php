@@ -1,11 +1,46 @@
 <?php 
 $advanced = get_option('smart_layer_settings_advanced');
 ?>
+
+<?php 
+$smart_layer_pro = get_option('smart_layer_pro');
+if ($smart_layer_pro) {
+?>
+    <script>
+        $ = jQuery;
+        $(window).load(function() {
+   			//$('.grid_5').hide();
+			// $('.grid_7').hide();
+			// $('#custom_api').hide();
+            $('.at40-accordion-checkbox').iButton('disable');
+            $("#at40-accordion-more-themesSelectBoxIt").addClass("selectboxit-disabled");
+            $("a.smart-layer-trigger").unbind('click');
+        });
+    </script>
+<?php } ?>
+
 <?php if (isset($_POST['save_smart_layer'])) { ?>
 <div class="updated settings-error" id="ettings_updated" > 
 	<p><strong>Settings saved.</strong></p>
 </div>
 <?php } ?>
+
+<?php if($smart_layer_pro) { ?>
+    <!-- <div class="updated addthis_setup_nag">
+        <p>Since you are an AddThis Pro user, your configuration options can be managed from 
+            <a href="https://www.addthis.com/dashboard#gallery" target="_blank">AddThis Pro Tool Gallery</a>.<br> 
+        </p>
+    </div> -->
+<?php } else {?>
+    <div class="updated addthis_setup_nag">
+        <p>AddThis Pro now available - start your trial at 
+            <a href="http://www.addthis.com" target="_blank">www.addthis.com</a> 
+            and get premium widgets, personalized content recommendations, 
+            advanced customization options and priority support.
+        </p>
+    </div>
+<?php } ?>
+
 <div class="smart-layer-wrap">
 <p>
 	<img alt="addthis" src="//cache.addthis.com/icons/v1/thumbs/32x32/more.png" class="header-img">
@@ -27,17 +62,25 @@ $advanced = get_option('smart_layer_settings_advanced');
         <input id="addthis_profile" type="text" name="addthis_profile" value="<?php echo $smart_layer_id;?>" autofill='off' autocomplete='off' />
         (<a href="#">?</a>)
 	</span>
+<?php if(!$smart_layer_pro) { ?>
 <div class="smart-layer-tab" id="custom_api">
 <a class="smart-layer-trigger" title="Developers: Edit your Smart Layer plugin code using our API to unlock additional features.">Custom API Configuration</a>
 </div>
+<?php } ?>
 <div class="smart-layer-container">
 	<div class="container_12 mt20">
 		<div class="grid_12">
 	    	<h3>Make your site smarter. Increase traffic, engagement and revenue by instantly showing the right social tools and content to every visitor.</h3>
+	    <?php if($smart_layer_pro) { ?>
+	    	<p>Since you are an AddThis Pro user, your configuration options can be managed from 
+            <a href="https://www.addthis.com/dashboard#gallery" target="_blank">AddThis Pro Tool Gallery</a>.
+       		</p>
+        <?php }?>
 	    </div>
 	    <div class="clear"></div>
 	    <div class="mb20"></div>
-	   
+	    <?php if(!$smart_layer_pro) { ?>
+
   		  <div class="grid_5">
     		<ul class="at40-accordion">
 		      <li class="at40-accordion-row at40-accordion-follow first" data-type="follow">
@@ -346,6 +389,7 @@ $advanced = get_option('smart_layer_settings_advanced');
         <script type="text/javascript" src="https://s7.addthis.com/js/300/addthis_widget.js"></script>
       </div>
     </div>
+    <?php } //Displayed only if pro user ?>
 	</div>
 	<input type="hidden" name="save_smart_layer" value="save_smart_layer" />
 	<input type="hidden" name="saved_settings" value="<?php get_option('smart_layer_settings');?>"/>
