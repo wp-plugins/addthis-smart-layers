@@ -172,11 +172,16 @@ function is_smart_layer_pro($id = null) {
     } else {
         $profile = get_option('smart_layer_profile');
     }
-    if ($profile) {
-        $profile_code = str_replace('-', '', $profile);
+    $options = get_option('addthis_settings');
+    $share_profile = $options['profile'];
+    if ($profile || $share_profile) {
         $smart_layer_pro = get_option('smart_layer_pro');
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, "http://q.addthis.com/feeds/1.0/config.json?pubid=" . $profile . "&callback=_ate.cbs.fds_" . $profile_code);
+        if ($profile) {
+            curl_setopt($ch, CURLOPT_URL, "http://q.addthis.com/feeds/1.0/config.json?pubid=" . $profile);
+        } else {
+            curl_setopt($ch, CURLOPT_URL, "http://q.addthis.com/feeds/1.0/config.json?pubid=" . $share_profile);
+        }
 
         // receive server response ...
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -184,11 +189,9 @@ function is_smart_layer_pro($id = null) {
         // further processing ....
         $server_output = curl_exec($ch);
         curl_close($ch);
-        $first_index = strpos($server_output, '({');
-        $last_index = strrpos($server_output, '})');
-
+        $array = json_decode($server_output);
         // check for pro user
-        if (($last_index - $first_index) > 2) {
+        if (array_key_exists('_default', $array)) {
             if ($smart_layer_pro) {
                 // update pro user settings 
                 update_option('smart_layer_pro', true);
