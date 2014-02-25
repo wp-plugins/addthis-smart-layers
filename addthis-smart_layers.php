@@ -2,14 +2,14 @@
 /*
  * Plugin Name: AddThis Smart Layers
  * Description: AddThis Smart Layers. Make your site smarter. Increase traffic, engagement and revenue by instantly showing the right social tools and content to every visitor. 
- * Version: 1.0.7
+ * Version: 1.0.9
  * Author: The AddThis Team
  * Author URI: http://www.addthis.com/blog
  * Plugin URI: http://www.addthis.com
  * License: GPL2
 */
 
-define('ADDTHIS_SMART_LAYER_PRODUCT_CODE', 'wpp-1.0.7');
+define('ADDTHIS_SMART_LAYER_PRODUCT_CODE', 'wpp-1.0.9');
 define('ADDTHIS_SMART_LAYER_AT_VERSION', 300);
 
 function insert_smart_layer() {
@@ -81,7 +81,7 @@ function smart_layer_admin_menu() {
 add_action('admin_menu','smart_layer_admin_menu');
 
 function smart_layer_admin_actions() {
-    is_smart_layer_pro();
+    at_smart_layer_is_pro_user();
     update_option('smart_layer_activated', '1');
     add_options_page("AddThis Smart Layers", "AddThis Smart Layers", 'manage_options', basename(__FILE__), "smart_layer_admin");
 }
@@ -107,7 +107,7 @@ function save_settings() {
     if (current_user_can('manage_options')) {
         $value = isset($_POST['value']) ? strip_if_needed($_POST['value']) : '';
         $id = isset($_POST['profileId']) ? $_POST['profileId'] : '';
-        if (!is_smart_layer_pro($id)) {
+        if (!at_smart_layer_is_pro_user($id)) {
             update_option('smart_layer_settings', "$value");
         }
         global $addthis_addjs;
@@ -124,7 +124,7 @@ function save_smart_layer_settings() {
 
 function save_custom_layer_settings($value, $id) {
     $value = strip_if_needed($value);
-    if (!is_smart_layer_pro($id)) {
+    if (!at_smart_layer_is_pro_user($id)) { 
         update_option('smart_layer_settings', "$value");
     }
     update_option('smart_layer_profile', "$id");
@@ -165,7 +165,7 @@ function smart_layer_early(){
 }
 
 // check for pro user
-function is_smart_layer_pro($id = null) {
+function at_smart_layer_is_pro_user($id = null) {
     $isPro = false;
     if ($id) {
         $profile = $id;
@@ -176,19 +176,13 @@ function is_smart_layer_pro($id = null) {
     $share_profile = $options['profile'];
     if ($profile || $share_profile) {
         $smart_layer_pro = get_option('smart_layer_pro');
-        $ch = curl_init();
         if ($profile) {
-            curl_setopt($ch, CURLOPT_URL, "http://q.addthis.com/feeds/1.0/config.json?pubid=" . $profile);
+            $request = wp_remote_get( "http://q.addthis.com/feeds/1.0/config.json?pubid=" . $profile );
         } else {
-            curl_setopt($ch, CURLOPT_URL, "http://q.addthis.com/feeds/1.0/config.json?pubid=" . $share_profile);
+            $request = wp_remote_get( "http://q.addthis.com/feeds/1.0/config.json?pubid=" . $share_profile );
         }
 
-        // receive server response ...
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        // further processing ....
-        $server_output = curl_exec($ch);
-        curl_close($ch);
+        $server_output = wp_remote_retrieve_body( $request );
         $array = json_decode($server_output);
         // check for pro user
         if (array_key_exists('_default', $array)) {
