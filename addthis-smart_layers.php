@@ -2,14 +2,14 @@
 /*
  * Plugin Name: AddThis Smart Layers
  * Description: AddThis Smart Layers. Make your site smarter. Increase traffic, engagement and revenue by instantly showing the right social tools and content to every visitor. 
- * Version: 1.0.8
+ * Version: 1.0.9
  * Author: The AddThis Team
  * Author URI: http://www.addthis.com/blog
  * Plugin URI: http://www.addthis.com
  * License: GPL2
 */
 
-define('ADDTHIS_SMART_LAYER_PRODUCT_CODE', 'wpp-1.0.8');
+define('ADDTHIS_SMART_LAYER_PRODUCT_CODE', 'wpp-1.0.9');
 define('ADDTHIS_SMART_LAYER_AT_VERSION', 300);
 
 function insert_smart_layer() {
@@ -176,19 +176,13 @@ function at_smart_layer_is_pro_user($id = null) {
     $share_profile = $options['profile'];
     if ($profile || $share_profile) {
         $smart_layer_pro = get_option('smart_layer_pro');
-        $ch = curl_init();
         if ($profile) {
-            curl_setopt($ch, CURLOPT_URL, "http://q.addthis.com/feeds/1.0/config.json?pubid=" . $profile);
+            $request = wp_remote_get( "http://q.addthis.com/feeds/1.0/config.json?pubid=" . $profile );
         } else {
-            curl_setopt($ch, CURLOPT_URL, "http://q.addthis.com/feeds/1.0/config.json?pubid=" . $share_profile);
+            $request = wp_remote_get( "http://q.addthis.com/feeds/1.0/config.json?pubid=" . $share_profile );
         }
 
-        // receive server response ...
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        // further processing ....
-        $server_output = curl_exec($ch);
-        curl_close($ch);
+        $server_output = wp_remote_retrieve_body( $request );
         $array = json_decode($server_output);
         // check for pro user
         if (array_key_exists('_default', $array)) {

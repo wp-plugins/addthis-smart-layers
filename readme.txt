@@ -3,7 +3,7 @@ Contributors: srijith.v, solchea, _mjk_, addthis_paul
 Tags: smart layers, mobile, follow, share, addthis, social, bookmark, sharing, bookmarking, widget, AddThis, addtoany, aim, bookmark, buzz, del.icio.us, Digg, e-mail, email, Facebook, google bookmarks, google buzz, myspace, network, NewsVine, Reddit, share this, sharethis, social, socialize, stumbleupon, twitter, windows live, yahoo buzz, pinterest, google+, recommended content, content recommendation, toaster
 Requires at least: 3.3
 Tested up to: 3.8.1
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 
 Increase traffic, content engagement, and revenue by showing the right social tools and best content. Make your site smarter with Smart Layers.
 
@@ -93,6 +93,9 @@ PHP 5+ is preferred; PHP 4 is supported.
 
 
 == Changelog ==
+= 1.0.9 =
+* Resolved conflict with WP-Supercache plugin
+* Fix for servers without CURL support
 
 = 1.0.8 = 
 * Resolved conflict with another plugin
@@ -118,7 +121,12 @@ PHP 5+ is preferred; PHP 4 is supported.
 = 1.0.1 =
 * Bug fixes.
 
+
+
 == Upgrade Notice ==
+= 1.0.9 =
+Resolved conflict with WP-Supercache plugin and support for servers without CURL
+
 = 1.0.8 = 
 Minor bug fix
 
