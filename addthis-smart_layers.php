@@ -2,7 +2,7 @@
 /*
  * Plugin Name: AddThis Smart Layers
  * Description: AddThis Smart Layers. Make your site smarter. Increase traffic, engagement and revenue by instantly showing the right social tools and content to every visitor. 
- * Version: 1.0.9
+ * Version: 1.1
  * Author: The AddThis Team
  * Author URI: http://www.addthis.com/blog
  * Plugin URI: http://www.addthis.com
@@ -88,11 +88,6 @@ function smart_layer_admin_actions() {
 
 add_action('admin_menu', 'smart_layer_admin_actions');  
 
-function register_smart_layer_settings() {
-    register_setting('smart_layer_settings', 'smart_layer_settings', 'smart_layer_save_settings');
-}
-add_action( 'admin_init', 'register_smart_layer_settings' );
-
 add_action("wp_ajax_save_smart_layer_settings", "save_smart_layer_settings");
 
 
@@ -108,7 +103,11 @@ function save_settings() {
         $value = isset($_POST['value']) ? strip_if_needed($_POST['value']) : '';
         $id = isset($_POST['profileId']) ? $_POST['profileId'] : '';
         if (!at_smart_layer_is_pro_user($id)) {
-            update_option('smart_layer_settings', "$value");
+            if ( !$value ) {
+                update_option('smart_layer_settings', "{}");
+            } else {
+                update_option('smart_layer_settings', "$value");
+            }
         }
         global $addthis_addjs;
         $addthis_addjs['profile'] = $id;
@@ -125,14 +124,18 @@ function save_smart_layer_settings() {
 function save_custom_layer_settings($value, $id) {
     $value = strip_if_needed($value);
     if (!at_smart_layer_is_pro_user($id)) { 
-        update_option('smart_layer_settings', "$value");
+        if ( !$value ) {
+            update_option('smart_layer_settings', "{}");
+        } else {
+            update_option('smart_layer_settings', "$value");
+        }
     }
     update_option('smart_layer_profile', "$id");
 }
 
 function smart_layer_deactivate() {
 	update_option( 'smart_layer_activated', '0' );
-	update_option( 'smart_layer_settings', ' ' );
+	update_option( 'smart_layer_settings', '{}' );
 	update_option( 'smart_layer_settings_advanced', '0' );
 }
 

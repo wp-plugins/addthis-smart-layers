@@ -459,7 +459,5 @@ if ($smart_layer_pro) {
     'recommended' : { <@ if (trendingLabel != "Recommended for you:") { @>'title': '<@= trendingLabel @>'<@ } @>
     } <@ }@>
 }
-<@ } else { @>
-  // No smart layers are selected
-<@ } @>
+<@ } else { @> {} <@ } @>
 </script>
