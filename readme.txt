@@ -3,7 +3,7 @@ Contributors: srijith.v, solchea, _mjk_, addthis_paul
 Tags: smart layers, mobile, follow, share, addthis, social, bookmark, sharing, bookmarking, widget, AddThis, addtoany, aim, bookmark, buzz, del.icio.us, Digg, e-mail, email, Facebook, google bookmarks, google buzz, myspace, network, NewsVine, Reddit, share this, sharethis, social, socialize, stumbleupon, twitter, windows live, yahoo buzz, pinterest, google+, recommended content, content recommendation, toaster
 Requires at least: 3.3
 Tested up to: 3.8.1
-Stable tag: 1.0.9
+Stable tag: 1.0.10
 
 Increase traffic, content engagement, and revenue by showing the right social tools and best content. Make your site smarter with Smart Layers.
 
