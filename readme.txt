@@ -93,6 +93,9 @@ PHP 5+ is preferred; PHP 4 is supported.
 
 
 == Changelog ==
+= 1.0.10 =
+* Minor Bug fix
+
 = 1.0.9 =
 * Resolved conflict with WP-Supercache plugin
 * Fix for servers without CURL support
@@ -124,6 +127,9 @@ PHP 5+ is preferred; PHP 4 is supported.
 
 
 == Upgrade Notice ==
+= 1.0.10 =
+Minor bug fix
+
 = 1.0.9 =
 Resolved conflict with WP-Supercache plugin and support for servers without CURL
 
